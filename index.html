@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>S0806: Дрон над град</title>
+		<title>Онлайн проба на S0806</title>
 		<meta charset="utf-8">
 		
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -23,7 +23,6 @@
 		
 			import * as THREE from "three";
 			import {OrbitControls} from "three/addons/controls/OrbitControls.js";
-			import * as lil from "three/addons/libs/lil-gui.module.min.js";
 			import {vaxInitParallax, renderer, scene, camera, light, effect} from "vax";
 
 			vaxInitParallax(animate, -3);
@@ -33,11 +32,6 @@
 			// черен фон и мъгла, която да затъмнява основите на сградите
 			scene.background = new THREE.Color('black');
 			scene.fog = new THREE.Fog('black', 0, 100);
-
-			// създаване на панел за паралакс
-			var data = {parallax: -1};
-			var gui = new lil.GUI();
-			gui.add(data, 'parallax', -3, 3).name('Паралакс');
 
 			// квадратна мрежа от NxN небостъргача
 			var n = 20;
@@ -66,9 +60,6 @@
 
 			function animate(t)
 			{
-				// актуализация на паралакса
-				effect.setEyeSeparation(data.parallax);
-
 				// движение на дрона
 				target.set(5*Math.sin(0.67*t+2.74), 0, 5*Math.cos(0.71*t-1.59));
 				camera.position.set(target.x, 110, target.z);
